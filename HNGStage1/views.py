@@ -1,3 +1,5 @@
+import os
+
 import requests
 from rest_framework import status
 from rest_framework.response import Response
@@ -15,7 +17,7 @@ class VisitorNameAPIView(APIView):
         ip = get_client_ip(self.request)
         lat, long = get_geolocation(ip)
         print(lat, long)
-        API_KEY = "e04d24125a488a802620448a0e1c3f60"
+        API_KEY = os.getenv('API_KEY')
 
         try:
             response = requests.get(
@@ -41,7 +43,7 @@ def get_client_ip(request):
 
 def get_geolocation(ip):
     try:
-        token = 'd8f602a8b115f5'
+        token = os.getenv('token')
         url = f'https://ipinfo.io/{ip}?token={token}'
         response = requests.get(url)
         lat, long = response.json().get('loc').split(',')
