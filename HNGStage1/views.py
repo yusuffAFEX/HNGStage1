@@ -29,7 +29,7 @@ class VisitorNameAPIView(APIView):
         location = response.get('name') if response.get('name') else '-'
         temp = response.get('main').get('temp') if response.get('main') else '-'
         print(location)
-        return Response(data={'client_id': ip, 'location': f'{location}', 'greeting': f'Hello, {visitor_name}!, the temperature is {temp} degrees Celcius in {location}'}, status=status.HTTP_200_OK)
+        return Response(data={'client_ip': ip, 'location': f'{location}', 'greeting': f'Hello, {visitor_name}!, the temperature is {temp} degrees Celcius in {location}'}, status=status.HTTP_200_OK)
 
 
 def get_client_ip(request):
