@@ -49,4 +49,5 @@ def get_geolocation(ip):
         lat, long = response.json().get('loc').split(',')
         return lat, long
     except Exception as e:
+        print(e)
         return None, None
