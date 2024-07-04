@@ -44,7 +44,7 @@ def get_client_ip(request):
 def get_geolocation(ip):
     try:
         token = os.getenv('token')
-        url = f'https://ipinfo.io/41.87.66.186?token={token}'
+        url = f'https://ipinfo.io/{ip}?token={token}'
         response = requests.get(url)
         lat, long = response.json().get('loc').split(',')
         return lat, long
